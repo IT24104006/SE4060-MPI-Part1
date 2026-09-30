@@ -7,7 +7,7 @@ int main(void)
     MPI_Status status;
     MPI_Init(NULL, NULL);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    char name[30];
+    char name[MPI_MAX_PROCESSOR_NAME];
     int len;
     MPI_Get_processor_name( name, &len );
     int x[10], y[10];
@@ -23,6 +23,8 @@ int main(void)
       printf("in computer 3 the value of y is printed\n");
       for (int r=0;r<10;r++)
          printf(" %d ",y[r]);
+      printf("\n");
+      printf("\n");
     }
     else
       printf("Just a normal process From rank %d machine %s\n", rank, name);
